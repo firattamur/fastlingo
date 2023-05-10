@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastlingo"
+version = "1.2.0"
+description = "FastLingo is a command-line tool designed to translate and manage app metadata within Fastlane projects."
+authors = [
+    { name = "Fırat Tamur", email = "ftamur16@ku.edu.tr" },
+]
+requires-python = ">=3.7"
+dependencies = [
+    "click",
+    "google-cloud-translate",
+    "toml",
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Localization",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
+]
+keywords = [
+    "fastlane",
+    "localization",
+    "translation",
+    "localize",
+    "translate",
+    "localization-management",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "mypy",
+    "ruff",
+    "black",
+    "isort",   
+    "sphinx",
+    "furo",
+    "pip-tools"
+]
+
+[tool.bumpver]
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message  = "Bump version {old_version} -> {new_version}"
+commit          = true
+tag             = true
+push            = false
+tag_name        = "v{new_version}"
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
+"fastlingo/__init__.py" = ["{version}"]
+
+[project.urls]
+homepage = "https://github.com/firattamur/fastlingo"
+repository = "https://github.com/firattamur/fastlingo"
+documentation = "https://github.com/firattamur/fastlingo"
+
+[project.scripts]
+fastlingo = "fastlingo.main:cli" 
